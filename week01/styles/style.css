@@ -10,7 +10,7 @@ body{
     /* height: 100vh; */
 }
 a {
-    color: rgb(243, 119, 206);
+    color: lavenderblush;
   }
 header{
     grid-area: header;
