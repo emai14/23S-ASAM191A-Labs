@@ -1,7 +1,7 @@
 console.log("Hello Asia-Am 191A! :)")
 
 // JavaScript const variable declaration
-const map = L.map('the_map').setView([33.9700, -118.444], 10); 
+const map = L.map('the_map').setView([33.900, -118.400], 10); 
 
 // Leaflet tile layer, i.e. the base map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,3 +29,5 @@ function addMarker(lat, lng, message){
 
 let tfc = L.marker([34.050450, -118.438120]).addTo(map)
 .bindPopup('Best Westwood restaurant')
+
+addMarker(33.774960,-117.941292,'fave cafe')
