@@ -40,7 +40,7 @@ fetch("map.geojson")
                     }
                 )}
             
-                const dataURL = https//docs.google.com/spreadsheets/d/1LySAP8eq3WPa5sw8kO-fznhf8Xb5OxN4fdeh5lK35Cw/edit?resourcekey&usp=forms_web_b#gid=1690107391
+                const dataURL = https//docs.google.com/spreadsheets/d/e/2PACX-1vRpg7kBsGNJzhikU7JVyV69p8ckvilVTVLG5BQGB2yUhNRiKG_GC7dafdcDaIHK8v1Ok083qsUTYrMj/pub?output=csv
                 loadData(dataURL)
 
 
