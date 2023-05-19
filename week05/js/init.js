@@ -1,5 +1,5 @@
 // declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
+let mapOptions = {'center': [34.0709,-90],'zoom':3}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
@@ -15,32 +15,15 @@ function addMarker(lat,lng,title,message){
     return message
 }
 
-fetch("map.geojson")
-    .then(response => {
-        return response.json()
-    })
-    .then(data =>{
-        // Basic Leaflet method to add GeoJSON data
-        L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => { 
-                    return L.circleMarker(latlng, {color: feature.properties.color})
-                }
-            }).bindPopup(layer => {
-                return layer.feature.properties.place;
-            }).addTo(map);
-    })
-
-
+    const dataURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpg7kBsGNJzhikU7JVyV69p8ckvilVTVLG5BQGB2yUhNRiKG_GC7dafdcDaIHK8v1Ok083qsUTYrMj/pub?output=csv"
             
     function loadData(url){
-                Papa.parse(url, {
+                Papa.parse(dataURL, {
                     header: true,
                     download: true,
                     complete: results => console.log(results)
                     }
                 )}
-            
-                const dataURL = https//docs.google.com/spreadsheets/d/e/2PACX-1vRpg7kBsGNJzhikU7JVyV69p8ckvilVTVLG5BQGB2yUhNRiKG_GC7dafdcDaIHK8v1Ok083qsUTYrMj/pub?output=csv
                 loadData(dataURL)
 
 
