@@ -21,10 +21,16 @@ function addMarker(lat,lng,title,message){
                 Papa.parse(dataURL, {
                     header: true,
                     download: true,
-                    complete: results => console.log(results)
+                    complete: results => processData(results)
                     }
                 )}
+
+                function processData(results){
+                    console.log(results)
+                    results.data.forEach(data => {
+                        console.log(data)
+                        addMarker(data.lat,data.lng,data['Where is your favorite location?'],data['What do you do here?'])
+                    })
+                }
+
                 loadData(dataURL)
-
-
-    
