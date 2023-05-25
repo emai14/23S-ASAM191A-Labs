@@ -1,12 +1,12 @@
 // declare variables
 let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
-let vaccinated = L.featureGroup();
-let nonVaccinated = L.featureGroup();
+let food = L.featureGroup();
+let none = L.featureGroup();
 
 let layers = {
-    "Vaccinated Respondent": vaccinated,
-    "Unvaccinated Respondent": nonVaccinated
+    "Can order food/drink": food,
+    "No food/drink": none
 }
 
 let circleOptions = {
@@ -18,7 +18,7 @@ let circleOptions = {
     fillOpacity: 0.8
 }
 
-const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNq8_prhrSwK3CnY2pPptqMyGvc23Ckc5MCuGMMKljW-dDy6yq6j7XAT4m6GG69CISbD6kfBF0-ypS/pub?output=csv"
+const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSQFSj2sr98Q6ZArZsEB-hzmDPm-SQlfetm4pWV5Erv6OCIgEaaGhH8X17iDlEYlccHhulxb8ovErPQ/pub?output=csv"
 
 // define the leaflet map
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
@@ -34,15 +34,15 @@ let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/r
 Esri_WorldGrayCanvas.addTo(map);
 
 function addMarker(data){
-    if(data['Have you been vaccinated?'] == "Yes"){
+    if(data['Can you order food/drink here?'] == "Yes"){
         circleOptions.fillColor = "red"
-        vaccinated.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Vaccinated</h2>`))
-        createButtons(data.lat,data.lng,data['Where did you get vaccinated?'])
+        food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Vaccinated</h2>`))
+        createButtons(data.lat,data.lng,data['What is this place called?'])
         }
     else{
         circleOptions.fillColor = "blue"
-        nonVaccinated.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Non-Vaccinated</h2>`))
-        createButtons(data.lat,data.lng,data['Where did you get vaccinated?'])
+        none.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Non-Vaccinated</h2>`))
+        createButtons(data.lat,data.lng,data['What is this place called?'])
     }
     return data
 }
@@ -74,9 +74,9 @@ function processData(results){
         console.log(data)
         addMarker(data)
     })
-    vaccinated.addTo(map) // add our layers after markers have been made
-    nonVaccinated.addTo(map) // add our layers after markers have been made  
-    let allLayers = L.featureGroup([vaccinated,nonVaccinated]);
+    food.addTo(map) // add our layers after markers have been made
+    none.addTo(map) // add our layers after markers have been made  
+    let allLayers = L.featureGroup([food,none]);
     map.fitBounds(allLayers.getBounds());
 }
 
