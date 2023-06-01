@@ -36,12 +36,12 @@ Esri_WorldGrayCanvas.addTo(map);
 function addMarker(data){
     if(data['Can you order food/drink here?'] == "Yes"){
         circleOptions.fillColor = "red"
-        food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Vaccinated</h2>`))
+        food.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Can Order Food</h2>`))
         createButtons(data.lat,data.lng,data['What is this place called?'])
         }
     else{
         circleOptions.fillColor = "blue"
-        none.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>Non-Vaccinated</h2>`))
+        none.addLayer(L.circleMarker([data.lat,data.lng],circleOptions).bindPopup(`<h2>No Food</h2>`))
         createButtons(data.lat,data.lng,data['What is this place called?'])
     }
     return data
